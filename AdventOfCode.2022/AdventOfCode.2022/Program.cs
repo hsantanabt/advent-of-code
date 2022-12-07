@@ -18,7 +18,8 @@ var timer = Stopwatch.StartNew();
 //CampCleanup.Part1();
 //CampCleanup.Part2();
 
-SupplyStacks.Part1();
+//SupplyStacks.Part1();
+SupplyStacks.Part2();
 
 timer.Stop();
 Console.WriteLine();
