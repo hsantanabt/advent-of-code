@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>AdventOfCode._2021</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Puzzles\Dive\Dive-PartOne-input.txt" />
+    <None Remove="Puzzles\Dive\Dive-PartOne-test-input.txt" />
+    <None Remove="Puzzles\Dive\Dive-PartTwo-input.txt" />
+    <None Remove="Puzzles\Dive\Dive-PartTwo-test-input.txt" />
+    <None Remove="Puzzles\SonarSweep-input.txt" />
+    <None Remove="Puzzles\SonarSweep-test-input.txt" />
+    <None Remove="Puzzles\SonarSweep\SonarSweep-PartTwo-input.txt" />
+    <None Remove="Puzzles\SonarSweep\SonarSweep-PartTwo-test-input.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Puzzles\Dive\Dive-PartTwo-input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\Dive\Dive-PartOne-input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\Dive\Dive-PartTwo-test-input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\Dive\Dive-PartOne-test-input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\SonarSweep\SonarSweep-PartTwo-input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\SonarSweep\SonarSweep-PartTwo-test-input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\SonarSweep\SonarSweep-PartOne-test-input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Puzzles\SonarSweep\SonarSweep-PartOne-input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
