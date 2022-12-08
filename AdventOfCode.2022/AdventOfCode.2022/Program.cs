@@ -25,7 +25,7 @@ var timer = Stopwatch.StartNew();
 
 //TuningTrouble.Part1And2();
 
-NoDeviceSpace.Part1();
+NoDeviceSpace.Part1And2();
 
 timer.Stop();
 
