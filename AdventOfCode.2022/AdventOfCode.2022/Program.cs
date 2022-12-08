@@ -4,6 +4,8 @@ using AOC2022.Day2;
 using AOC2022.Day3;
 using AOC2022.Day4;
 using AOC2022.Day5;
+using AOC2022.Day6;
+using AOC2022.Day7;
 
 var timer = Stopwatch.StartNew();
 
@@ -19,8 +21,13 @@ var timer = Stopwatch.StartNew();
 //CampCleanup.Part2();
 
 //SupplyStacks.Part1();
-SupplyStacks.Part2();
+//SupplyStacks.Part2();
+
+//TuningTrouble.Part1And2();
+
+NoDeviceSpace.Part1();
 
 timer.Stop();
+
 Console.WriteLine();
 Console.WriteLine($"Elapse Time: {timer.ElapsedMilliseconds}ms");
