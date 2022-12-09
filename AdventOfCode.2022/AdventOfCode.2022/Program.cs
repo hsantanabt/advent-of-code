@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using AOC2022.Day0;
 using AOC2022.Day1;
 using AOC2022.Day2;
 using AOC2022.Day3;
@@ -25,7 +26,10 @@ var timer = Stopwatch.StartNew();
 
 //TuningTrouble.Part1And2();
 
-NoDeviceSpace.Part1And2();
+//NoDeviceSpace.Part1And2();
+
+//Treetop.Part1();
+//Treetop.Part2();
 
 timer.Stop();
 
