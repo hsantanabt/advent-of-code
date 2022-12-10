@@ -229,7 +229,11 @@ public static class Treetop
 			for (var x = 0; x < treeMap.GetLength(0); x++)
 			{
 				var tree = treeMap[y, x];
-				scenicScores.Add(tree.ScenicScore);
+
+				if (tree.ScenicScore > 0)
+				{
+					scenicScores.Add(tree.ScenicScore);
+				}
 			}
 		}
 

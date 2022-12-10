@@ -7,6 +7,7 @@ using AOC2022.Day4;
 using AOC2022.Day5;
 using AOC2022.Day6;
 using AOC2022.Day7;
+using AOC2022.Day9;
 
 var timer = Stopwatch.StartNew();
 
@@ -30,6 +31,8 @@ var timer = Stopwatch.StartNew();
 
 //Treetop.Part1();
 //Treetop.Part2();
+
+RopeBridge.Part1();
 
 timer.Stop();
 
