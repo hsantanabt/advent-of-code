@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace AOC2022.Day9;
+﻿namespace AOC2022.Day9;
 
 public static class RopeBridge
 {
@@ -14,9 +12,9 @@ public static class RopeBridge
 
 	private static readonly Dictionary<string, (int X, int Y)> MoveMap = new() {
 		{"L", (-1, 0)},
-		{"U", (0, -1)},
+		{"U", (0, 1)},
 		{"R", (1, 0)},
-		{"D", (0, 1)},
+		{"D", (0, -1)},
 	};
 
 	public static void Part1()
@@ -39,7 +37,8 @@ public static class RopeBridge
 			Position = (startPosition.X, startPosition.Y)
 		};
 
-		var times = 1;
+		var visits = new Dictionary<(int X, int Y), int>();
+
 		foreach (var line in input)
 		{
 			var move = line.Split(' ');
@@ -53,79 +52,71 @@ public static class RopeBridge
 				head.Position.X += moveDelta.X;
 				head.Position.Y += moveDelta.Y;
 
-				if (Math.Abs(head.Position.X - tail.Position.X) >= 2 ||
-				    Math.Abs(head.Position.Y - tail.Position.Y) >= 2)
-				{
-					//Console.WriteLine("Tail Moves!");
+				var dX = Math.Abs(head.Position.X - tail.Position.X);
+				var dY = Math.Abs(head.Position.Y - tail.Position.Y);
 
-					// Same column
-					if (head.Position.X == tail.Position.X)
+				if (dX < 2 && dY < 2)
+				{
+					continue;
+				}
+
+				// Same column
+				if (head.Position.X == tail.Position.X)
+				{
+					if (head.Position.Y > tail.Position.Y)
 					{
-						if (head.Position.Y > tail.Position.Y)
-						{
-							tail.Position.Y--;
-						}
-						else
-						{
-							tail.Position.Y++;
-						}
+						tail.Position.Y++;
 					}
-					// Same row
-					else if (head.Position.Y == tail.Position.Y)
-					{
-						if (head.Position.X > tail.Position.Y)
-						{
-							tail.Position.X--;
-						}
-						else
-						{
-							tail.Position.X++;
-						}
-					}
-					// Diagonal
 					else
 					{
-						if (head.Position.X > tail.Position.Y)
-						{
-							tail.Position.X--;
-						}
-						else
-						{
-							tail.Position.X++;
-						}
+						tail.Position.Y--;
+					}
+				}
+				// Same row
+				else if (head.Position.Y == tail.Position.Y)
+				{
+					if (head.Position.X > tail.Position.Y)
+					{
+						tail.Position.X++;
+					}
+					else
+					{
+						tail.Position.X--;
+					}
+				}
+				// Diagonal
+				else
+				{
+					if (head.Position.X > tail.Position.Y)
+					{
+						tail.Position.X++;
+					}
+					else
+					{
+						tail.Position.X--;
+					}
 
-						if (head.Position.Y > tail.Position.Y)
-						{
-							tail.Position.Y--;
-						}
-						else
-						{
-							tail.Position.Y++;
-						}
+					if (head.Position.Y > tail.Position.Y)
+					{
+						tail.Position.Y++;
+					}
+					else
+					{
+						tail.Position.Y--;
 					}
 				}
 
-				//if (s == 4)
-				//{
-				//	break;
-				//}
+				visits[(tail.Position.X, tail.Position.Y)]++;
 			}
-
-			if (times == 1)
-			{
-				break;
-			}
-
-			times++;
 		}
 
-		state[head.Position.Y, head.Position.X] = head.Name;
-		state[tail.Position.Y, tail.Position.X] = tail.Name;
+		//state[head.Position.Y, head.Position.X] = head.Name;
+		//state[tail.Position.Y, tail.Position.X] = tail.Name;
 
 		PrintState(state);
 
-		var tailVisits = 0;
-		Console.WriteLine($"Tail Visits: {tailVisits}");
+		
+		Console.WriteLine($"Tail Visits: {visits.Count}");
 	}
 
     public static void Part2()
