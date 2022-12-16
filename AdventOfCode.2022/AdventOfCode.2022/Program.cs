@@ -37,7 +37,8 @@ var timer = Stopwatch.StartNew();
 //CRT.Part1();
 // PENDING -> CRT.Part2();
 
-MonkeyMiddle.Part1();
+//MonkeyMiddle.Part1();
+//MonkeyMiddle.Part2();
 
 timer.Stop();
 
