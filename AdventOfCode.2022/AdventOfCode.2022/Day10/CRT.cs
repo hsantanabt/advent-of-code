@@ -1,4 +1,5 @@
-﻿namespace AOC2022.Day0;
+﻿// ReSharper disable InconsistentNaming
+namespace AOC2022.Day0;
 
 // ReSharper disable once InconsistentNaming
 public static class CRT
@@ -54,10 +55,9 @@ public static class CRT
 
     public static void Part2()
     {
-		var input = File.ReadAllLines($"{Day}/sample2.txt");
+		var input = File.ReadAllLines($"{Day}/input.txt");
 		var instructions = new Queue<(string Instruction, int Value)>();
-		var darkPixels = DarkPixels;
-
+		
 		foreach (var line in input)
 		{
 			var program = line.Split(' ');
@@ -78,28 +78,44 @@ public static class CRT
 
 		var registerX = 1;
 		var cycles = instructions.Count;
-		var signalCycles = new List<int> { 20, 60, 100, 140, 180, 220 };
-		var signalStrengths = new List<int>();
+		var CRTRows = new Queue<string>();
+
+		var currentCRTRow = string.Empty;
+		var currentCRTIndex = 0;
+
+		//DrawSpritePosition(registerX);
+		//Console.WriteLine();
 
 		for (var cycle = 1; cycle <= cycles; cycle++)
 		{
-			if (signalCycles.Contains(cycle))
-			{
-				//Console.WriteLine($"Cycle # {cycle} - Start - Register X: {registerX}");
-				signalStrengths.Add(cycle * registerX);
-			}
+			currentCRTRow += registerX - 1 <= currentCRTIndex && currentCRTIndex <= registerX + 1 ? "#" : ".";
+
+			//var paddedCycle = cycle.ToString().PadLeft(3, ' ');
+			//Console.WriteLine($"During cycle {paddedCycle}: CRT draws pixel in position {currentCRTIndex}");
+			//Console.WriteLine($"Start of cycle {paddedCycle}: Register X is {registerX}");
+			//Console.WriteLine($"Current CRT row: {currentCRTRow}");
 
 			var instruction = instructions.Dequeue();
 			registerX += instruction.Value;
 
-			//Console.WriteLine($"Cycle # {cycle} - End - Register X: {registerX}");
+			//Console.WriteLine($"End of cycle  {paddedCycle}: finish executing {instruction.Instruction} (Register X is now {registerX})");
+
+			//DrawSpritePosition(registerX);
+			//Console.WriteLine();
+
+			currentCRTIndex++;
+
+			if (cycle % 40 == 0)
+			{
+				CRTRows.Enqueue(currentCRTRow);
+				currentCRTRow = string.Empty;
+				currentCRTIndex = 0;
+			}
 		}
 
-		Console.WriteLine($"Sum of Signal Strengths: {signalStrengths.Sum()}");
-
-		for (var i = 1; i <= 240; i+= 40)
+		foreach (var crtRow in CRTRows)
 		{
-			DrawTestPixel(i, i+39);
+			Console.WriteLine(crtRow);
 		}
     }
 
@@ -110,5 +126,16 @@ public static class CRT
 	    var cycleStart = sCycle.ToString().PadLeft(3, ' ');
 		var cycleEnd = eCycle.ToString().PadLeft(3, ' ');
 		Console.WriteLine($"Cycle {cycleStart} -> {pixels} <- Cycle {cycleEnd}");
+    }
+
+    private static void DrawSpritePosition(int spriteIndex)
+    {
+	    var pixels = new StringBuilder(DarkPixels);
+	    pixels
+		    .Insert(spriteIndex - 1, "#")
+			.Insert(spriteIndex, "#")
+		    .Insert(spriteIndex + 1, "#")
+		    .Remove(37, 3);
+		Console.WriteLine($"Sprite position: {pixels}");
     }
 }
