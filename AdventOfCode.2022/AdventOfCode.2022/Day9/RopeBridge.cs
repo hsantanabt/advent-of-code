@@ -106,6 +106,7 @@ public static class RopeBridge
 					}
 				}
 
+				visits.TryAdd((tail.Position.X, tail.Position.Y), 0);
 				visits[(tail.Position.X, tail.Position.Y)]++;
 			}
 		}

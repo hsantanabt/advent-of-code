@@ -348,3 +348,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Puzzle inputs
+!**/Day0/input.txt
+**/Day*/input.txt
